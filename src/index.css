@@ -1,0 +1,195 @@
+/* Fontshare - Supreme (headings) and Plus Jakarta Sans (body) */
+@import url('https://api.fontshare.com/v2/css?f[]=supreme@400,500,600,700,800,900&f[]=plus%20jakarta%20sans@300,400,500,600,700&display=swap');
+
+@import "tailwindcss";
+
+/* Custom Tailwind Font Classes */
+/* Heading utility mapped to Supreme */
+.font-heading {
+  font-family: 'Supreme', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* Body text utility mapped to Plus Jakarta Sans */
+.font-body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 400;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+  background-color: #f9a8d4;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure proper centering */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom border width for loader */
+.border-3 {
+  border-width: 3px;
+}
+
+/* Heart loader animation */
+.heart-loader {
+  width: 60px;
+  aspect-ratio: 1;
+  background: linear-gradient(#fb7185 0 0) bottom/100% 0% no-repeat #ffe4ec;
+  -webkit-mask: 
+    radial-gradient(circle at 60% 65%, #000 62%, #0000 65%) top left, 
+    radial-gradient(circle at 40% 65%, #000 62%, #0000 65%) top right, 
+    linear-gradient(to bottom left, #000 42%,#0000 43%) bottom left , 
+    linear-gradient(to bottom right,#000 42%,#0000 43%) bottom right;
+  mask: 
+    radial-gradient(circle at 60% 65%, #000 62%, #0000 65%) top left, 
+    radial-gradient(circle at 40% 65%, #000 62%, #0000 65%) top right, 
+    linear-gradient(to bottom left, #000 42%,#0000 43%) bottom left , 
+    linear-gradient(to bottom right,#000 42%,#0000 43%) bottom right;
+  -webkit-mask-size: 50% 50%;
+  mask-size: 50% 50%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: heartFill 2s infinite linear;
+}
+
+@keyframes heartFill {
+    90%,100% {background-size:100% 100%}
+}
+
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+  .text-responsive-xl {
+    font-size: 2.5rem;
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .text-responsive-xl {
+    font-size: 4rem;
+  }
+  
+  .text-responsive-lg {
+    font-size: 2rem;
+  }
+}
+
+/* ============================= */
+/* Moonsection: colors & tokens  */
+/* ============================= */
+:root {
+  --romantic-pink: #f9a8d4; /* pink-300 */
+  --romantic-lavender: #c4b5fd; /* violet-300 */
+  --romantic-purple: #d8b4fe; /* purple-300 */
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --aurora-gradient: radial-gradient(60% 50% at 20% 40%, rgba(167,139,250,0.35), transparent 60%),
+                     radial-gradient(60% 50% at 70% 30%, rgba(236,72,153,0.35), transparent 60%),
+                     radial-gradient(60% 50% at 50% 10%, rgba(34,211,238,0.25), transparent 60%);
+  --star-glow: 0 0 8px rgba(255,255,255,0.6), 0 0 14px rgba(255,255,255,0.35);
+  --big-star-glow: 0 0 18px rgba(251,191,36,0.8), 0 0 32px rgba(251,191,36,0.5);
+  --moon-glow: 0 0 40px rgba(236,72,153,0.25);
+  --romantic-glow: 0 10px 35px rgba(236,72,153,0.25);
+}
+
+.bg-card { background-color: var(--card-bg); }
+.bg-starlight { background-color: #ffffff; }
+.text-romantic-pink { color: var(--romantic-pink); }
+.text-romantic-lavender { color: var(--romantic-lavender); }
+.text-romantic-purple { color: var(--romantic-purple); }
+.border-romantic-purple\/20 { border-color: rgba(216,180,254,0.2); }
+
+/* ============================= */
+/* Moonsection: animations       */
+/* ============================= */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+.animate-fade-in-up-delayed { animation: fadeInUp 1s ease-out forwards; animation-delay: 0.2s; }
+.animate-fade-in-up-delayed-2 { animation: fadeInUp 1.2s ease-out forwards; animation-delay: 0.35s; }
+
+@keyframes auroraShift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 0%; }
+}
+.animate-aurora-shift { animation: auroraShift 12s ease-in-out infinite; }
+
+@keyframes driftIn {
+  0% { opacity: 0; transform: translateY(-10px) scale(0.8); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-drift-in { animation: driftIn 0.9s ease-out forwards; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.animate-twinkle { animation: twinkle 1.5s ease-in-out infinite; }
+.animate-twinkle-slow { animation: twinkle 2.2s ease-in-out infinite; }
+.animate-twinkle-fast { animation: twinkle 1s ease-in-out infinite; }
+
+@keyframes moonRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.animate-moon-rotate { animation: moonRotate 60s linear infinite; }
+
+@keyframes glowPulse { 0%,100% { box-shadow: 0 0 12px rgba(251,191,36,0.6);} 50% { box-shadow: 0 0 24px rgba(251,191,36,0.9);} }
+.animate-glow-pulse { animation: glowPulse 2.2s ease-in-out infinite; }
+
+@keyframes floatY { 0% { transform: translateY(-4px);} 50% { transform: translateY(4px);} 100% { transform: translateY(-4px);} }
+.animate-float { animation: floatY 3s ease-in-out infinite; }
+
+@keyframes slideInSecret { 0% { opacity: 0; transform: translateY(12px) scale(0.98);} 100% { opacity: 1; transform: translateY(0) scale(1);} }
+.animate-slide-in-secret { animation: slideInSecret 0.35s ease-out both; }
+
+/* Dots loader for lightweight loading */
+@keyframes dots {
+  0%, 20% { content: ""; }
+  40% { content: "."; }
+  60% { content: ".."; }
+  80%, 100% { content: "..."; }
+}
+.dots-loader {
+  position: relative;
+  width: 60px;
+  height: 24px;
+}
+.dots-loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  color: var(--romantic-lavender);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  animation: dots 1.2s steps(1, end) infinite;
+}
+

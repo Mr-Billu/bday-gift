@@ -1,0 +1,40 @@
+.candle {
+    position: relative;
+    width: 20px;
+    height: 100px;
+    background: #ff8b8b;
+    border-radius: 5px;
+  }
+  
+  .wick {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 2px;
+    height: 10px;
+    background: black;
+    transform: translateX(-50%);
+  }
+  
+  .flame {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    width: 20px;
+    height: 30px;
+    background: orange;
+    border-radius: 50% 50% 50% 50%;
+    transform: translateX(-50%);
+  }
+
+  
+  
+  .animate-flicker {
+    animation: flicker 0.2s infinite;
+  }
+  
+  @keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); opacity: 1; }
+    50% { transform: translateX(-50%) scale(0.9); opacity: 0.7; }
+    100% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+  }
