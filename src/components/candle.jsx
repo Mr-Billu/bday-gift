@@ -20,7 +20,7 @@ export default function Candle({ onBlownOut }) {
         let maxVolume = Math.max(...dataArray);
 
         // Tune this threshold by testing
-        if (maxVolume > 235) {
+        if (maxVolume > 250) {
           setIsLit(false);
           if (!hasNotifiedRef.current && typeof onBlownOut === 'function') {
             hasNotifiedRef.current = true;
