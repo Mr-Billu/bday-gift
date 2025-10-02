@@ -82,7 +82,7 @@ const SecretOverlay = ({ onClose }) => {
             <p className="font-body w-[500px] text-romantic-lavender text-lg leading-relaxed">
               Happpyy birthday meriii jannnnnn🎉🎂🥰 Wish you happpppeir
               birthday, May you succeed in every field of life May Allah protect
-              you from evil eyes and harmful peoples. jannn you are so adorable,
+              you from evil eyes and harmful peoples.you are so 
               beautiful, amazing and carin and cute, you are the most pretty
               girl i have ever seen in my life, you have the beautiful smile in
               all over the worlds, you are the reason of my happiness, even when
