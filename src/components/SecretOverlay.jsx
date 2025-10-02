@@ -1,12 +1,25 @@
 import React, { useState } from "react";
 
+
+const hashPassword = (password) => {
+  let hash = 0;
+  for (let i = 0; i < password.length; i++) {
+    const char = password.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; 
+  }
+  return hash.toString();
+};
+
+const CORRECT_PASSWORD_HASH = "961563266";
+
 const SecretOverlay = ({ onClose }) => {
   const [secretStep, setSecretStep] = useState("password");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   const handleProceed = () => {
-    if (password === "ihatesummer") {
+    if (hashPassword(password) === CORRECT_PASSWORD_HASH) {
       setPasswordError("");
       setSecretStep("loading");
       setTimeout(() => setSecretStep("message"), 900);
@@ -57,14 +70,14 @@ const SecretOverlay = ({ onClose }) => {
                 </span>
               )}
             </div>
-            <div className="mt-2 flex justify-center">
+            
               <button
                 onClick={handleProceed}
-                className="border-2 border-romantic-purple text-center bg-transparent text-white rounded-full transition-all duration-300 font-medium px-3 py-1.5"
+                className=" border-romantic-purple text-center bg-transparent text-white rounded transition-all duration-300 font-medium px-10 py-8"
               >
                 Proceed
               </button>
-            </div>
+            
           </div>
         )}
 
@@ -82,19 +95,12 @@ const SecretOverlay = ({ onClose }) => {
             <p className="font-body w-[500px] text-romantic-lavender text-lg leading-relaxed">
               Happpyy birthday meriii jannnnnn🎉🎂🥰 Wish you happpppeir
               birthday, May you succeed in every field of life May Allah protect
-              you from evil eyes and harmful peoples.you are so 
-              beautiful, amazing and carin and cute, you are the most pretty
-              girl i have ever seen in my life, you have the beautiful smile in
-              all over the worlds, you are the reason of my happiness, even when
-              im at my lowest and in my dullest mood and moment when i think
-              about you and see you , i literly become happy. i am so grateful
-              to have you in my life, you not just a girl for me, you are my
-              love, my peace, my babe,meri pyariii si jannn🎀, my
-              everything 💖your smile it
-              just lightens my world up, I LOVEEEE YOUUUUU SOOOO MUCHHHHHHH meri
-              jannnnn🤎 im so in love with you, and once again Ifohh HAPPYYYYYY
-              BIRTHDAYYYYYYY! may you have this year full of happiness and joy
-              and wonderfull memories.
+              you from evil eyes and harmful peoples. i am so grateful to have
+              you in my life, you not just a girl for me, you are my love, my
+              peace, my babe,meri pyariii si jannn🎀, my everything 💖your smile
+              it just lightens my world up, I LOVEEEE YOUUUUU SOOOO MUCHHHHHHH
+              meri jannnnn🤎 and once again HAPPYYYYYY BIRTHDAYYYYYYY! may you
+              have this year full of happiness and joy and wonderfull memories.
             </p>
           </div>
         )}
