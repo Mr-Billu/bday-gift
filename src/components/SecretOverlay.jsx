@@ -73,7 +73,14 @@ const SecretOverlay = ({ onClose }) => {
             
               <button
                 onClick={handleProceed}
-                className=" border-romantic-purple text-center bg-transparent text-white rounded transition-all duration-300 font-medium px-10 py-8"
+                className="border-2 border-romantic-pink/80 text-center bg-gradient-to-br from-romantic-purple/70 to-romantic-pink/60 text-white rounded-xl shadow-lg transition-all duration-300 font-semibold px-16 py-7 text-lg hover:bg-romantic-pink/80 hover:border-romantic-purple/90"
+                style={{
+                  minWidth: "220px",
+                  minHeight: "72px",
+                  letterSpacing: "0.04em",
+                  boxShadow: "0 4px 24px 0 rgba(220, 130, 255, 0.16)",
+                  cursor: "pointer",
+                }}
               >
                 Proceed
               </button>
