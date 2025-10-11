@@ -12,10 +12,9 @@ function App() {
   const [showModal, setShowModal] = useState(false);
 
   const handleStartLoading = () => {
-    // This will be called when user clicks "Yes" in the loading screen
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // 2 seconds after clicking yes
+    }, 2000);
 
     return () => clearTimeout(timer);
   };
@@ -38,7 +37,6 @@ function App() {
 
   return (
     <div className="relative min-h-screen w-full">
-      {/* Loading Screen */}
       <AnimatePresence>
         {isLoading && (
           <motion.div
@@ -57,7 +55,6 @@ function App() {
         )}
       </AnimatePresence>
       
-      {/* Main scenes */}
       <AnimatePresence mode="wait">
         {currentScene === 'cake' && !isLoading && (
           <motion.div
@@ -85,7 +82,6 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Modal for Card Carousel */}
       <AnimatePresence>
         {showModal && (
           <motion.div
@@ -96,7 +92,6 @@ function App() {
             onClick={handleCloseModal}
           >
             <div onClick={e => e.stopPropagation()} className="relative">
-              {/* Close button from WishingCard.jsx */}
               <button
                 onClick={handleCloseModal}
                 className="absolute top-6 right-8 text-rose-500 cursor-pointer hover:text-rose-800 transition z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/70 backdrop-blur-md shadow-md hover:shadow-lg"

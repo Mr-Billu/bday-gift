@@ -4,7 +4,6 @@ import Candle from "./candle"
 
 export default function AnimatedCake({ onCandleBlownOut }) {
   return (
-    // Main container: Set width and height to contain the cake and candle perfectly.
     <div className="relative w-[200px] h-[150px]">
 
  
@@ -16,13 +15,11 @@ export default function AnimatedCake({ onCandleBlownOut }) {
         id="cake"
         version="1.1"
         width="200px"
-        height="500px" // Fit the container's height
-        viewBox="0 0 200 500" // Keep the original viewBox to not break path data
-        preserveAspectRatio="xMidYMax meet" // Align SVG content to the bottom
+        height="500px"
+        viewBox="0 0 200 500"
+        preserveAspectRatio="xMidYMax meet"
         className="absolute bottom-0 left-0"
       >
-        {/* All <motion.path> and <rect> elements remain unchanged here... */}
-        {/* Bottom cake layer */}
         <motion.path
           fill="#a88679"
           initial={{
@@ -41,7 +38,6 @@ export default function AnimatedCake({ onCandleBlownOut }) {
           }}
           transition={{ duration: 0.8, delay: 2, ease: "easeInOut" }}
         />
-        {/* First filling */}
         <motion.path
           fill="#8b6a60"
           initial={{
@@ -57,7 +53,6 @@ export default function AnimatedCake({ onCandleBlownOut }) {
           }}
           transition={{ duration: 0.5, delay: 2.8, ease: "easeInOut" }}
         />
-        {/* Second cake layer */}
         <motion.path
           fill="#a88679"
           initial={{
@@ -73,7 +68,6 @@ export default function AnimatedCake({ onCandleBlownOut }) {
           }}
           transition={{ duration: 0.5, delay: 3.3, ease: "easeInOut" }}
         />
-        {/* Second filling */}
         <motion.path
           fill="#8b6a60"
           initial={{
@@ -89,7 +83,6 @@ export default function AnimatedCake({ onCandleBlownOut }) {
           }}
           transition={{ duration: 0.5, delay: 3.8, ease: "easeInOut" }}
         />
-        {/* Top cake layer */}
         <motion.path
           fill="#a88679"
           initial={{
@@ -104,7 +97,6 @@ export default function AnimatedCake({ onCandleBlownOut }) {
           }}
           transition={{ duration: 0.3, delay: 4.3, ease: "easeInOut" }}
         />
-        {/* Cream/Frosting */}
         <motion.path
           fill="#fefae9"
           initial={{
@@ -123,7 +115,6 @@ export default function AnimatedCake({ onCandleBlownOut }) {
           }}
           transition={{ duration: 2, delay: 4.6, ease: "easeInOut" }}
         />
-        {/* Cake base */}
         <rect x="10" y="475.571" fill="#fefae9" width="180" height="4" />
       </svg>
     </div>

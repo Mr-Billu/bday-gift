@@ -7,7 +7,6 @@ import DecorativeElements from './DecorativeElements.jsx';
 import ConfettiCeleb from './ConfettiCeleb.jsx';
 
 
-// TypingText component
 const TypingText = ({ text, duration, delay = 0, className = "" }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,7 +54,6 @@ const CakeScene = ({ onOpenCards, onGoToMoon }) => {
   const [showWishingCard, setShowWishingCard] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  // Infinite hearts from center to random positions AFTER candle is blown (stop when wishing card shows)
   useEffect(() => {
     if (!candleBlown || showWishingCard) return;
     let heartId = 0;
@@ -71,34 +69,30 @@ const CakeScene = ({ onOpenCards, onGoToMoon }) => {
         duration: 2 + Math.random() * 2,
         emoji: ['💕','🎉','🎀','💝' ,'💓','💖','💗'][Math.floor(Math.random() * 7)]
       };
-      setHearts(prev => (prev.length > 60 ? [...prev.slice(30), newHeart] : [...prev, newHeart])); // Allow more hearts
-    }, 150); // Faster interval for more hearts per second
+      setHearts(prev => (prev.length > 60 ? [...prev.slice(30), newHeart] : [...prev, newHeart]));
+    }, 150);
     return () => clearInterval(interval);
   }, [candleBlown, showWishingCard]);
 
-  // Show confetti when candle is blown
   useEffect(() => {
     if (!candleBlown) return;
     setShowConfetti(true);
-    // Hide confetti after animation completes
     const confettiTimer = setTimeout(() => {
       setShowConfetti(false);
     }, 3000);
     return () => clearTimeout(confettiTimer);
   }, [candleBlown]);
 
-  // Show wishing card 5 seconds after candle is blown
   useEffect(() => {
     if (!candleBlown) return;
     const timer = setTimeout(() => {
       setShowWishingCard(true);
-    }, 5000); // Show card 5 seconds after candle is blown
+    }, 5000);
     return () => clearTimeout(timer);
   }, [candleBlown]);
   
   return (
     <div className="min-h-screen w-full  bg-gradient-to-br from-pink-200 via-purple-100 to-rose-200 flex flex-col relative overflow-hidden px-4">
-      {/* Decorative Elements */}
       <DecorativeElements isWishingCardVisible={showWishingCard} />
      <div
        className="flex flex-row gap-4"
@@ -117,14 +111,12 @@ const CakeScene = ({ onOpenCards, onGoToMoon }) => {
          className="relative flex items-center justify-center px-7 py-3 rounded-2xl bg-pink-200 shadow-md transition-all duration-300 cursor-pointer overflow-hidden group border-none focus:outline-none"
          style={{ minWidth: 140, minHeight: 56 }}
        >
-         {/* Text */}
          <span
            className="absolute transition-all duration-300 text-pink-700 font-body text-lg z-10 group-hover:opacity-0 group-hover:translate-y-2"
            style={{ pointerEvents: "none", color: "#a259c9" }}
          >
            About You
          </span>
-         {/* Letter Icon */}
          <span
            className="absolute opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-6 transition-all duration-300 z-10"
            style={{ pointerEvents: "none" }}
@@ -136,37 +128,30 @@ const CakeScene = ({ onOpenCards, onGoToMoon }) => {
              <path d="M24 22 Q22 20 20 22 Q20 24 24 26 Q28 24 28 22 Q26 20 24 22 Z" fill="#ffb6d5" />
            </svg>
          </span>
-         {/* Button background overlay for hover */}
          <span className="absolute inset-0 rounded-2xl transition-all duration-300 group-hover:bg-pink-300 group-hover:shadow-lg" aria-hidden="true"></span>
        </button>
 
-       {/* See Your Moon Button */}
        <button
          onClick={onGoToMoon}
          className="relative flex items-center justify-center px-7 py-3 rounded-2xl bg-purple-100 shadow-md transition-all duration-300 cursor-pointer overflow-hidden group border-none focus:outline-none"
          style={{ minWidth: 160, minHeight: 56 }}
        >
-         {/* Text */}
          <span
             className="absolute transition-all duration-300 text-purple-700 font-body text-lg z-10 group-hover:opacity-0 group-hover:translate-y-2"
            style={{ pointerEvents: "none", color: "#a259c9" }}
          >
            See Your Moon
          </span>
-         {/* Moon Icon */}
          <span
            className="absolute opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-6 transition-all duration-300 z-10"
            style={{ pointerEvents: "none" }}
          >
            <text x="18" y="38" fontSize="28" textAnchor="middle" alignmentBaseline="middle">🌙</text>
          </span>
-         {/* Button background overlay for hover */}
          <span className="absolute inset-0 rounded-2xl transition-all duration-300 group-hover:bg-purple-200 group-hover:shadow-lg" aria-hidden="true"></span>
        </button>
      </div>
-      {/* Main content container */}
       <div className="flex-1 flex flex-col items-center justify-center h-full">
-      {/* Hearts AFTER candle blow: spawn from center to random positions */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {hearts.map((heart) => (
           <motion.div
@@ -199,9 +184,7 @@ const CakeScene = ({ onOpenCards, onGoToMoon }) => {
 
      
 
-      {/* Main content */}
       <div className=" flex flex-col items-center justify-center text-center gap-14 z-10 px-4 w-full max-w-6xl mx-auto">
-        {/* Heading with typing animation */}
         <div className="flex flex-col items-center justify-center text-center px-4 w-full mx-auto mb-8">
           <TypingText 
             text="HAPPYY BIRTHDAYY! 🎂🎉" 
@@ -237,10 +220,8 @@ const CakeScene = ({ onOpenCards, onGoToMoon }) => {
       </motion.p>
       </div>
 
-      {/* Confetti Celebration */}
       <ConfettiCeleb trigger={showConfetti} />
 
-      {/* Wishing Card */}
       <WishingCard 
         isVisible={showWishingCard} 
         onClose={() => setShowWishingCard(false)} 

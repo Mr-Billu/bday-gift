@@ -7,7 +7,6 @@ const MoonSection = ({ onBackToCake }) => {
   const [stars, setStars] = useState([]);
 
   useEffect(() => {
-    // Generate random stars
     const generateStars = () => {
       const newStars = [];
       for (let i = 0; i < 50; i++) {
@@ -45,7 +44,6 @@ const MoonSection = ({ onBackToCake }) => {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-[#0a1026]">
-      {/* Aurora Background */}
       <div
         className="absolute inset-0 opacity-30 pointer-events-none"
         style={{
@@ -55,7 +53,6 @@ const MoonSection = ({ onBackToCake }) => {
         }}
       />
 
-      {/* Animated Stars */}
       <div className="absolute inset-0 pointer-events-none">
         {stars.map((star) => (
           <div
@@ -78,7 +75,6 @@ const MoonSection = ({ onBackToCake }) => {
         ))}
       </div>
 
-      {/* Big Secret Star */}
       <div
         className="absolute top-20 right-50 cursor-pointer group z-40"
         onClick={handleSecretClick}
@@ -100,7 +96,6 @@ const MoonSection = ({ onBackToCake }) => {
         </div>
       </div>
 
-      {/* Back to Cake Button */}
       <button
         onClick={onBackToCake}
         className="absolute font-body top-8 left-8 z-20 cursor-pointer hover:bg-transparent"
@@ -123,9 +118,7 @@ const MoonSection = ({ onBackToCake }) => {
         ← Back to Cake
       </button>
 
-      {/* Main Content Container */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen gap-6">
-        {/* Top Text - "The moon when you were born" (transparent tube) */}
 
         <div
           className="backdrop-blur-sm rounded-full"
@@ -143,7 +136,6 @@ const MoonSection = ({ onBackToCake }) => {
           </h2>
         </div>
 
-        {/* Moon Image (moved slightly down) */}
         <div className='flex flex-col justify-center items-center gap-4 max-w-6xl w-4xl'
         style={{
           borderBottom: '1px solid #f9a8d4',
@@ -178,7 +170,6 @@ const MoonSection = ({ onBackToCake }) => {
           </div>
 
 
-        {/* Decorative Elements & Birthday Wishes */}
         <div className="opacity-0 animate-fade-in-up-delayed-2 max-w-2xl mx-auto  flex flex-col justify-between items-center gap-4">
         <p className="text-lg md:text-xl text-romantic-lavender font-body font-light">
               Happyyy Birthdayyyy,  IFRAH 💕
@@ -187,7 +178,6 @@ const MoonSection = ({ onBackToCake }) => {
         </div>
       </div>
 
-      {/* Secret Overlay (lazy-loaded) */}
       {showSecret && (
         <Suspense
           fallback={
