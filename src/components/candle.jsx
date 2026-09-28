@@ -35,7 +35,7 @@ export default function Candle({ onBlownOut }) {
   }, []);
 
   return (
-    <div className="flex flex-col items-center mt-20">
+    <div className="flex flex-col items-center mt-10">
       {isLit ? (
         <div className="candle">
           <div className="flame animate-flicker"></div>

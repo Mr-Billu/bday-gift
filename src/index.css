@@ -18,6 +18,7 @@ button { min-height: 44px; touch-action: manipulation; }
 .popup-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
 .cake-screen { background: var(--bg-cake); height: 100dvh; overflow: hidden; }
 .cake-without-candle > div:first-child { display: none; }
+.cake-wrapper > div > div:first-child { transform: translateY(calc(-1 * clamp(12px, 3dvh, 32px))) !important; }
 .love-screen { background: var(--bg-love); }
 .popup-card, .finale-card { border: 1px solid rgba(176,40,79,.12); box-shadow: var(--warm-shadow); }
 .popup-overlay { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: max(.75rem, env(safe-area-inset-top)) max(.75rem, env(safe-area-inset-right)) max(.75rem, env(safe-area-inset-bottom)) max(.75rem, env(safe-area-inset-left)); overflow: hidden; background: rgba(107,45,74,.24); backdrop-filter: blur(8px); }

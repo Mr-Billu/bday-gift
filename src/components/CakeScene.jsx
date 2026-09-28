@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AnimatedCake from './Cake.jsx';
 import WishingCard from './WishingCard.jsx';
 import DecorativeElements from './DecorativeElements.jsx';
@@ -40,6 +40,14 @@ const CakeScene = ({ onOpenCards, onForgiven, showCandle = true }) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showApologyCard, setShowApologyCard] = useState(false);
   const [dodgeCount, setDodgeCount] = useState(0);
+  const candleCompletionRef = useRef(false);
+
+  const handleCandleBlownOut = () => {
+    if (!showCandle || candleCompletionRef.current) return;
+    candleCompletionRef.current = true;
+    setCandleBlown(true);
+    notify(`${HER_NAME} blew out the candles`, "candle-blown");
+  };
 
   useEffect(() => {
     if (!candleBlown || showWishingCard) return;
@@ -85,7 +93,7 @@ const CakeScene = ({ onOpenCards, onForgiven, showCandle = true }) => {
             <TypingText text={MESSAGES.cakeHeading} duration={1.2} delay={3} className="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-pink-500 leading-tight tracking-tight" />
             <TypingText text={MESSAGES.cakeWish} duration={2} delay={5} className="font-body text-lg sm:text-xl md:text-2xl leading-tight text-rose-500 mx-auto max-w-2xl mb-6 sm:mb-12" />
           </div>
-          <div className={`cake-wrapper flex flex-col items-center justify-center ${showCandle ? "" : "cake-without-candle"}`} style={{ transform: "translateY(clamp(-64px, -6dvh, -24px))" }}><AnimatedCake onCandleBlownOut={() => { setCandleBlown(true); notify(`${HER_NAME} blew out the candles`, "candle-blown"); }} /></div>
+          <div className={`cake-wrapper flex flex-col items-center justify-center ${showCandle ? "" : "cake-without-candle"}`} style={{ transform: "translateY(clamp(-64px, -6dvh, -24px))" }}><AnimatedCake onCandleBlownOut={handleCandleBlownOut} /></div>
         </div>
         <motion.p className="font-body text-base sm:text-lg text-center text-purple-500 mt-6 sm:mt-8 italic" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut" }}>{MESSAGES.cakeDream}<br />{MESSAGES.cakeHappiness}</motion.p>
       </div>
